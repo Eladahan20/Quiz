@@ -11,6 +11,7 @@ export default function Quiz() {
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   /*  This is the react way of adding a value to the state array without deleting the previous values */
+  /* Using useCallback here is to prevent this function to recreate each time the component renders, no need dependencies as this state updating function is handled by react */
   const handleSelectAnswer = useCallback(function handleSelectAnswer(
     selectedAnswer
   ) {
@@ -19,7 +20,7 @@ export default function Quiz() {
     });
   },
   []);
-
+  /* Using useCallback here is to prevent this function to recreate each time the component renders, need dependency of itself because it depends on user input */
   const handleSkipAnswer = useCallback(
     () => handleSelectAnswer(null),
     [handleSelectAnswer]
