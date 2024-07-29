@@ -33,7 +33,11 @@ export default function Answers({
         return (
           <li key={answer} className="answer">
             {/* This is react way of passing functions with a parameter to invoke immediatly */}
-            <button onClick={() => onSelect(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>
