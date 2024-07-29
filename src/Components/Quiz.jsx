@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import QUESTIONS from "../questions";
 import quizCompletedImg from "../assets/quiz-complete.png";
 import Question from "./Question";
+import Summary from "./Summary";
 
 export default function Quiz() {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -27,12 +28,7 @@ export default function Quiz() {
   );
 
   if (quizIsComplete) {
-    return (
-      <div id="summary">
-        <img src={quizCompletedImg} alt="Trophy Icon" />
-        <h2>Quiz Completed!</h2>
-      </div>
-    );
+    return <Summary userAnswers={userAnswers} />;
   }
 
   /*  We want to shuffle the answers, so we create a new array and randomise its answers - we don't want to override the original answers array because the first answer is always the right one */
